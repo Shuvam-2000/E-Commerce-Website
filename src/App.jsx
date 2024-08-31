@@ -8,9 +8,10 @@ import Cart from './pages/Cart'
 import Login from './pages/Login'
 import PlaceOrder from './pages/PlaceOrder'
 import Orders from './pages/Orders';
-import './index.css'; 
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import { ShoppingContextProvider } from './context/ContextShop';
+import './index.css'; 
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/place-order' element={<PlaceOrder/>}/>
                 <Route path='/orders' element={<Orders/>}/>
             </Routes>
+            <Footer/>
         </BrowserRouter>
       </div> 
       </ShoppingContextProvider> 
