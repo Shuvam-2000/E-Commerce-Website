@@ -5,7 +5,7 @@ const ShopContext = createContext();
 
 const ShoppingContextProvider = ({ children }) => {
     
-    // Storing all the necessary data and info for the home page in variables
+    // Storing all the necessary data and info for the home page 
     const priceCurrency = '₹';
     const deliveryCharge = 40;
     const text1 = "Explore";
@@ -21,10 +21,10 @@ const ShoppingContextProvider = ({ children }) => {
     const policyReturn2 = "Shop with Confidence: 7-Day Returns"
     const policySupport = "Best customer support"
     const policySupport2 = "Round-the-Clock Customer Assistance"
-
+    const footerText1 = "Welcome to ShopsPhere, your ultimate destination for the latest dress and wearables.Our mission is to provide you with the highest quality products and unmatched customer service. Whether you're looking for trendy stylish dresses or casual wearables, we have something for everyone."
 
     // state for opening the sidebar in the mobie view - home page
-    const[menuVisible, setMenuVisible] = useState(false)
+    const [menuVisible, setMenuVisible] = useState(false)
     
     // State to store and manage 10 products from the products array in assests - home page
     const [exploreProducts, setExploreProducts] = useState([]);
@@ -42,8 +42,11 @@ const ShoppingContextProvider = ({ children }) => {
         setBestSeller(bestSellingProduct.slice(0, 6))
     },[exploreProducts])
 
+    // state for showing the filters in the mobile screen - inventory(collection) page
+    const [showFilter, setShowFilter] = useState(false);
+
     // Storing all the data in an object
-    const value = {
+    const allValue = {
         menuVisible,
         setMenuVisible,
         products,
@@ -64,10 +67,13 @@ const ShoppingContextProvider = ({ children }) => {
         policyReturn2,
         policySupport,
         policySupport2,
+        footerText1,
+        showFilter,
+        setShowFilter,
     };
 
     return (
-        <ShopContext.Provider value={value}>
+        <ShopContext.Provider value={allValue}>
             {children}
         </ShopContext.Provider>
     );
