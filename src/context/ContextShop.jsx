@@ -23,6 +23,12 @@ const ShoppingContextProvider = ({ children }) => {
     const policySupport2 = "Round-the-Clock Customer Assistance"
     const footerText1 = "Welcome to ShopsPhere, your ultimate destination for the latest dress and wearables.Our mission is to provide you with the highest quality products and unmatched customer service. Whether you're looking for trendy stylish dresses or casual wearables, we have something for everyone."
 
+    // nessecary data for the inventory page
+    const collectionHeading = "Explore"
+    const collectionHeading2 = "Our Inventory"
+
+
+
     // state for opening the sidebar in the mobie view - home page
     const [menuVisible, setMenuVisible] = useState(false)
     
@@ -44,6 +50,16 @@ const ShoppingContextProvider = ({ children }) => {
 
     // state for showing the filters in the mobile screen - inventory(collection) page
     const [showFilter, setShowFilter] = useState(false);
+
+    // state to show all the products from the products array on render - inventory(collection) page
+    const [showProduct, setShowProduct] = useState([]);
+
+    useEffect(() => {
+        if (products) {   // check if product exists
+        setShowProduct(products);  // if products exixt updtae the showProduct with the value of product
+        }
+    }, [products]);
+
 
     // Storing all the data in an object
     const allValue = {
@@ -70,6 +86,9 @@ const ShoppingContextProvider = ({ children }) => {
         footerText1,
         showFilter,
         setShowFilter,
+        collectionHeading,
+        collectionHeading2,
+        showProduct
     };
 
     return (
