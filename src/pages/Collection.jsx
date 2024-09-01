@@ -153,7 +153,8 @@ const Collection = () => {
 
         {/* Product Display */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 p-3">
-          {filteredProducts.map((showProductData) => (
+          {filteredProducts.length > 0 ?
+            filteredProducts.map((showProductData) => (
               <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out hover:bg-[#ff4646] hover:text-white">
                 <Link to={`/products/${showProductData._id}`} className="block p-4">
                   <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 object-cover" />
@@ -161,7 +162,7 @@ const Collection = () => {
                   <p className="text-[#414141] font-semibold transition-colors duration-300 hover:text-white mt-2">{priceCurrency}{showProductData.price}</p>
                 </Link>
               </div>
-            ))}
+            )) : <p className="text-sm sm:text-sm font-serif text-[#414141]">Oops! No Products Available</p>}
         </div>
       </div>
     </div>
