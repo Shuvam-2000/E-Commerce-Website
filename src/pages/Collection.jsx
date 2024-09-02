@@ -4,12 +4,13 @@ import assets from "../assets/assets";
 import { Link } from "react-router-dom";
 
 const Collection = () => {
-  const { products, showProduct, showFilter, setShowFilter, collectionHeading, collectionHeading2, priceCurrency } = useContext(ShopContext);
+  const { products, showProduct, showFilter, setShowFilter, collectionHeading, collectionHeading2, priceCurrency, search, showSearch } = useContext(ShopContext);
 
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [subCategoryFilter, setSubCategoryFilter] = useState([]);
   const [priceFilter, setPriceFilter] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState(showProduct);
+  const [sortType, setSortType] = useState("relevant");
 
   const toggleCategory = (e) => {
     const valueOfCategory = e.target.value;
@@ -22,35 +23,57 @@ const Collection = () => {
 
   const toggleSubCategory = (e) => {
     const valueSubCategory = e.target.value;
+    
     if (subCategoryFilter.includes(valueSubCategory)) {
-      setSubCategoryFilter(prev => prev.filter(item => item !== valueSubCategory));
+      // If the value is already in the filter, remove it
+      const updatedSubCategoryFilter = subCategoryFilter.filter(item => item !== valueSubCategory);
+      setSubCategoryFilter(updatedSubCategoryFilter);
     } else {
-      setSubCategoryFilter(prev => [...prev, valueSubCategory]);
+      // If the value is not in the filter, add it
+      const updatedSubCategoryFilter = [...subCategoryFilter, valueSubCategory];
+      setSubCategoryFilter(updatedSubCategoryFilter);
     }
   };
 
   const togglePrice = (e) => {
     const valueOfPrice = e.target.value;
+    
     if (priceFilter.includes(valueOfPrice)) {
-      setPriceFilter(prev => prev.filter(item => item !== valueOfPrice));
+      // If the value is already in the filter, remove it
+      const updatedPriceFilter = priceFilter.filter(item => item !== valueOfPrice);
+      setPriceFilter(updatedPriceFilter);
     } else {
-      setPriceFilter(prev => [...prev, valueOfPrice]);
+      // If the value is not in the filter, add it
+      const updatedPriceFilter = [...priceFilter, valueOfPrice];
+      setPriceFilter(updatedPriceFilter);
     }
   };
+  
 
   const applyFilter = () => {
-    let filtered = [...products];
+    let filteredProduct = [...products];
+
+    // Apply filters
+    if (showSearch && search) {
+      filteredProduct = filteredProduct.filter(item =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
 
     if (categoryFilter.length > 0) {
-      filtered = filtered.filter(product => categoryFilter.includes(product.category));
+      filteredProduct = filteredProduct.filter(product =>
+        categoryFilter.includes(product.category)
+      );
     }
 
     if (subCategoryFilter.length > 0) {
-      filtered = filtered.filter(product => subCategoryFilter.includes(product.subCategory));
+      filteredProduct = filteredProduct.filter(product =>
+        subCategoryFilter.includes(product.subCategory)
+      );
     }
 
     if (priceFilter.length > 0) {
-      filtered = filtered.filter(product => {
+      filteredProduct = filteredProduct.filter(product => {
         const price = product.price;
         if (priceFilter.includes('Hundred') && price >= 100 && price <= 200) {
           return true;
@@ -60,18 +83,29 @@ const Collection = () => {
         }
         if (priceFilter.includes('ThreeHundred') && price > 300 && price <= 400) {
           return true;
-        }else{
-          return false;
         }
+        return false;
       });
     }
 
-    setFilteredProducts(filtered);
+    // Apply sorting
+    switch (sortType) {
+      case 'low-high':
+        filteredProduct.sort((a, b) => a.price - b.price);
+        break;
+      case 'high-low':
+        filteredProduct.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        break;
+    }
+
+    setFilteredProducts(filteredProduct);
   };
 
   useEffect(() => {
     applyFilter();
-  }, [categoryFilter, subCategoryFilter, priceFilter, products]);
+  }, [categoryFilter, subCategoryFilter, priceFilter, products, showSearch, search, sortType]);
 
   return (
     <div className="sm:flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
@@ -132,7 +166,7 @@ const Collection = () => {
               <input type="checkbox" className="w-3 cursor-pointer" value={'Twohundred'} onChange={togglePrice} onClick={() => setShowFilter(!showFilter)} /> ₹200 - ₹300
             </p>
             <p className="flex gap-2">
-              <input type="checkbox" className="w-3 cursor-pointer" value={'ThreeHundred'} onChange={togglePrice}onClick={() => setShowFilter(!showFilter)} /> ₹300 - ₹400
+              <input type="checkbox" className="w-3 cursor-pointer" value={'ThreeHundred'} onChange={togglePrice} onClick={() => setShowFilter(!showFilter)} /> ₹300 - ₹400
             </p>
           </div>
         </div>
@@ -144,7 +178,7 @@ const Collection = () => {
           <p className="text-[#414141]">{collectionHeading} <span className="text-[#f21c1c] font-medium">{collectionHeading2} :-</span></p>
 
           {/* Product Sorting */}
-          <select className="border border-gray-300 text-sm px-2 rounded-md font-mono cursor-pointer">
+          <select onChange={(e) => setSortType(e.target.value)} className="border border-gray-300 text-sm px-2 rounded-md font-mono cursor-pointer">
             <option value="relevant" className="bg-gray-300">Relevant Products</option>
             <option value="low-high">Price: Low to High</option>
             <option value="high-low" className="bg-gray-300">Price: High to Low</option>
@@ -157,12 +191,12 @@ const Collection = () => {
             filteredProducts.map((showProductData) => (
               <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out hover:bg-[#ff4646] hover:text-white">
                 <Link to={`/products/${showProductData._id}`} className="block p-4">
-                  <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 object-cover" />
+                  <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 object-cover rounded-lg" />
                   <p className="text-sm sm:text-lg font-serif text-[#414141] transition-colors duration-300 hover:text-white">{showProductData.name}</p>
                   <p className="text-[#414141] font-semibold transition-colors duration-300 hover:text-white mt-2">{priceCurrency}{showProductData.price}</p>
                 </Link>
               </div>
-            )) : <p className="text-sm sm:text-sm font-serif text-[#414141]">Oops! No Products Available</p>}
+            )) : <p className="text-center text-md sm:text-lg font-serif text-[#ff4646] font-semibold mt-4 col-span-full">Oops! No Products Available Now</p>}
         </div>
       </div>
     </div>
@@ -170,4 +204,5 @@ const Collection = () => {
 };
 
 export default Collection;
+
 
