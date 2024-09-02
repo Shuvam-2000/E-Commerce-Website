@@ -45,7 +45,7 @@ const ShoppingContextProvider = ({ children }) => {
 
     useEffect(() => {
         const bestSellingProduct = exploreProducts.filter((item) => item.bestseller === true)
-        setBestSeller(bestSellingProduct.slice(0, 6))
+        setBestSeller(bestSellingProduct.slice(0, 5))
     },[exploreProducts])
 
     // state for showing the filters in the mobile screen - inventory(collection) page
@@ -59,6 +59,12 @@ const ShoppingContextProvider = ({ children }) => {
         setShowProduct(products);  // if products exixt updtae the showProduct with the value of product
         }
     }, [products]);
+
+    // state for the search bar in inventory(colllection page)
+    const [search, setSearch] = useState("")
+    const[showSearch, setShowSearch] = useState(false)
+
+
 
 
     // Storing all the data in an object
@@ -88,7 +94,11 @@ const ShoppingContextProvider = ({ children }) => {
         setShowFilter,
         collectionHeading,
         collectionHeading2,
-        showProduct
+        showProduct,
+        search,
+        setSearch,
+        showSearch,
+        setShowSearch,
     };
 
     return (
