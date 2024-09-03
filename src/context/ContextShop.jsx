@@ -65,8 +65,6 @@ const ShoppingContextProvider = ({ children }) => {
     const[showSearch, setShowSearch] = useState(false)
 
 
-
-
     // Storing all the data in an object
     const allValue = {
         menuVisible,
