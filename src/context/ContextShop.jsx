@@ -64,7 +64,29 @@ const ShoppingContextProvider = ({ children }) => {
     const [search, setSearch] = useState("")
     const[showSearch, setShowSearch] = useState(false)
 
+    // Add to cart functionality
+    const[cartItems, setCartItems] = useState({})
 
+    const addToCart = async (itemId, size) => {
+        let cartData = structuredClone(cartItems);   // copy of cartItems
+    
+        if (cartData[itemId]) {
+            if (cartData[itemId][size]) {
+                cartData[itemId][size] += 1;
+            } else {
+                cartData[itemId][size] = 1;
+            }
+        } else {
+            cartData[itemId] = {};
+            cartData[itemId][size] = 1;
+        }
+        setCartItems(cartData)
+    };
+
+    useEffect(() => {
+        console.log(cartItems)
+    },[cartItems])
+    
     // Storing all the data in an object
     const allValue = {
         menuVisible,
@@ -97,6 +119,8 @@ const ShoppingContextProvider = ({ children }) => {
         setSearch,
         showSearch,
         setShowSearch,
+        cartItems,
+        addToCart,
     };
 
     return (
