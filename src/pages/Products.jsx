@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ContextShop";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import assets from "../assets/assets";
 
 const Products = () => {
   const { productId } = useParams();
-  const { products, priceCurrency } = useContext(ShopContext);
+  const { products, priceCurrency, addToCart} = useContext(ShopContext);
   const [productData, setProductData] = useState(null);
   const [ mainImage, setMainImage ] = useState("");
   const [selectSize, setSelectSize] = useState("")
+  const [checkPinCode, setCheckCode] = useState("")
+  const [otherProducts, setOtherProducts] = useState([])
   
   const fetchProductData = () => {
     const foundProduct = products.find((item) => item._id === productId);
@@ -19,10 +21,15 @@ const Products = () => {
     }
   };
 
-
+  // show product
   useEffect(() => {
     fetchProductData();
   }, [products, productId]);
+
+  useEffect(() => {
+    const OtherProduct = products.filter((item) => item.bestseller === true)
+    setOtherProducts(OtherProduct.slice(0, 5))
+  },[products])
 
   return productData ? (
     <div className="border-t pt-10 transition-opacity ease-in duration-500 opacity-100">
@@ -72,13 +79,59 @@ const Products = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-row ">
-            <button className="border-l border-t border-b bg-[#f21c1c] text-white border-gray-400 py-3 pt-3 px-3 text-sm font-semibold">ADD TO CART</button>
+          <p className="text-gray-700 text-sm font-serif tracking-widest">Check product avaliablity for your pincode :-</p>
+          <div className="flex flex-row">
+            <input value={checkPinCode} onChange={(e) => setCheckCode(e.target.value)} className=" mt-2 py-2 pt-2 px-2 b rounded-sm
+            border-l border-t border-b border-gray-400" type="text" placeholder="Enter Your Pincode"/>
+            <button className="border-t border-r border-b border-black mt-2 px-4 pl-4 pb-2 pt-2 rounded-b-sm bg-[#f21c1c] text-white">Check</button>
+          </div>
+          <div className="flex flex-row mt-8">
+            <button onClick={() => addToCart(productData._id, selectSize)} className="border-l border-t border-b bg-[#f21c1c] text-white border-gray-400 py-3 pt-3 px-3 text-sm font-semibold">ADD TO CART</button>
             <button className="border-r border-t border-b bg-white text-gray-400 border-gray-400 py-2 pt-2 px-4 text-sm font-semibold">BUY NOW</button>
           </div>
           <hr className="mt-6 sm:w-4/5 bg-gray-600"/>
+          <div className="text-sm text-gray-600 mt-5 flex flex-col gap-1 tracking-wider">
+              <p className="font-mono text-sm">Delivery in Two Days</p>
+              <p className="font-mono text-sm">Easy Return and exchange policy within 7 days</p>
+          </div>
         </div>
       </div>
+
+      {/* Top Review Section */}
+      <div className="mt-20">
+        <div className="flex">
+          <b className="border-t border-r border-l rounded-md px-5 py-3 font-mono text-xl">Top Review :-</b>
+        </div>
+        <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
+          <h1 className="text-gray-700 font-mono text-xl mx-2">Ankit Kumar</h1>
+          <div className="flex items-center gap-1 mx-2 mb-2">
+              <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+            </div>
+          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large. Overall, it’s a great choice for casual wear, but consider sizing down if you prefer a snug fit.</p>
+        </div>
+      </div>
+
+      <h1 className="flex justify-center mt-10 mb-2 text-[#414141] text-xl sm:text-2xl font-mono">
+        Have a Look
+        <span className="text-[#f21c1c] font-mono ml-2">At Our BestSellers :-</span>
+      </h1>
+      {/* Explore BestSelleing Products */}
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-8 gap-4 gap-y-6 cursor-pointer mt-10'>
+                {otherProducts.map((otherProductData) => (
+                    <div key={otherProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out">
+                    <Link to={`/products/${otherProductData._id}`} className="block">
+                        <img src={otherProductData.image} alt={otherProductData.name} className="w-full h-40 sm:mb-5 object-cover" />
+                        <p className="text-center mb-2 text-xs font-medium">{otherProductData.name}</p>
+                        <p className="text-center text-xs mb-2 font-mono">{priceCurrency}{otherProductData.price}</p>
+                        </Link>
+                    </div>
+                ))}
+            </div>      
     </div>
   ) : (
     <div className="opacity-0">Loading...</div>
