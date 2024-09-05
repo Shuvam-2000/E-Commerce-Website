@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ContextShop";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import assets from "../assets/assets";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const Products = () => {
   const { productId } = useParams();
@@ -12,12 +14,55 @@ const Products = () => {
   const [selectSize, setSelectSize] = useState("")
   const [checkPinCode, setCheckCode] = useState("")
   const [otherProducts, setOtherProducts] = useState([])
+
+    const settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    }
   
   const fetchProductData = () => {
     const foundProduct = products.find((item) => item._id === productId);
     if (foundProduct) {
       setProductData(foundProduct);
-      setMainImage(foundProduct.image[0]);
+      setMainImage(foundProduct.image);
     }
   };
 
@@ -100,8 +145,9 @@ const Products = () => {
       {/* Top Review Section */}
       <div className="mt-20">
         <div className="flex">
-          <b className="border-t border-r border-l rounded-md px-5 py-3 font-mono text-xl">Top Review :-</b>
+          <b className="border-t border-r border-l rounded-md px-5 py-3 font-mono text-xl"> Our Top Customers Say :-</b>
         </div>
+        <Slider {...settings} className="">
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
           <h1 className="text-gray-700 font-mono text-xl mx-2">Ankit Kumar</h1>
           <div className="flex items-center gap-1 mx-2 mb-2">
@@ -112,11 +158,60 @@ const Products = () => {
               <img className="w-3.5" src={assets.star_icon}/>
               <img className="w-3.5" src={assets.star_icon}/>
             </div>
-          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large. Overall, it’s a great choice for casual wear, but consider sizing down if you prefer a snug fit.</p>
+          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
+        <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
+          <h1 className="text-gray-700 font-mono text-xl mx-2">Ananya Sharma</h1>
+          <div className="flex items-center gap-1 mx-2 mb-2">
+              <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+            </div>
+          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
+        </div>
+        <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
+          <h1 className="text-gray-700 font-mono text-xl mx-2"> Priya Desai</h1>
+          <div className="flex items-center gap-1 mx-2 mb-2">
+              <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+            </div>
+          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
+        </div>
+        <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
+          <h1 className="text-gray-700 font-mono text-xl mx-2">Amit Singh</h1>
+          <div className="flex items-center gap-1 mx-2 mb-2">
+              <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+            </div>
+          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
+        </div>
+        <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
+          <h1 className="text-gray-700 font-mono text-xl mx-2">Neha Gupta</h1>
+          <div className="flex items-center gap-1 mx-2 mb-2">
+              <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_icon}/>
+            </div>
+          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
+        </div>
+        </Slider>
       </div>
 
-      <h1 className="flex justify-center mt-10 mb-2 text-[#414141] text-xl sm:text-2xl font-mono">
+      <h1 className="flex justify-center mt-14 mb-2 text-[#414141] text-xl sm:text-2xl font-mono">
         Have a Look
         <span className="text-[#f21c1c] font-mono ml-2">At Our BestSellers :-</span>
       </h1>
