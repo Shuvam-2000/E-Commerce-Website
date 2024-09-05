@@ -168,7 +168,7 @@ const Products = () => {
               <img className="w-3.5" src={assets.star_icon}/>
               <img className="w-3.5" src={assets.star_icon}/>
               <img className="w-3.5" src={assets.star_icon}/>
-              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_dull_icon}/>
             </div>
           <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
@@ -192,7 +192,7 @@ const Products = () => {
               <img className="w-3.5" src={assets.star_icon}/>
               <img className="w-3.5" src={assets.star_icon}/>
               <img className="w-3.5" src={assets.star_icon}/>
-              <img className="w-3.5" src={assets.star_icon}/>
+              <img className="w-3.5" src={assets.star_dull_icon}/>
             </div>
           <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
