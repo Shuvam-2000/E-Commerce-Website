@@ -1,21 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ContextShop";
 import { NavLink, Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import assets from "../assets/assets";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+
 const Products = () => {
   const { productId } = useParams();
-  const { products, priceCurrency, addToCart} = useContext(ShopContext);
+  const { products, priceCurrency, addToCart, handleBuyNow} = useContext(ShopContext);
   const [productData, setProductData] = useState(null);
   const [ mainImage, setMainImage ] = useState("");
   const [selectSize, setSelectSize] = useState("")
   const [checkPinCode, setCheckCode] = useState("")
   const [otherProducts, setOtherProducts] = useState([])
 
-    const settings = {
+  const settings = {
       dots: true,
       infinite: false,
       speed: 500,
@@ -57,7 +59,24 @@ const Products = () => {
         }
       ]
     }
+
+  // validation for the checking pin code
+  const handleCheck = () => {
+    if(checkPinCode === ''){
+      toast.error("Please enter a pincode")
+    }else if(isNaN(checkPinCode)){
+      setCheckCode('')
+      toast.error("Pincode should be a number")
+    }else if(checkPinCode.length !== 6){
+      setCheckCode('')
+      toast.error("Pincode should be of 6 digits")
+    }else{
+      setCheckCode('')
+      toast.success("Product Avaliable Now")   // it is for demo purpose 
+    }
+  }
   
+  // show the actual product in the page
   const fetchProductData = () => {
     const foundProduct = products.find((item) => item._id === productId);
     if (foundProduct) {
@@ -66,11 +85,12 @@ const Products = () => {
     }
   };
 
-  // show product
   useEffect(() => {
     fetchProductData();
   }, [products, productId]);
 
+
+  // show the other products
   useEffect(() => {
     const OtherProduct = products.filter((item) => item.bestseller === true)
     setOtherProducts(OtherProduct.slice(0, 5))
@@ -128,11 +148,11 @@ const Products = () => {
           <div className="flex flex-row">
             <input value={checkPinCode} onChange={(e) => setCheckCode(e.target.value)} className=" mt-2 py-2 pt-2 px-2 b rounded-sm
             border-l border-t border-b border-gray-400" type="text" placeholder="Enter Your Pincode"/>
-            <button className="border-t border-r border-b border-black mt-2 px-4 pl-4 pb-2 pt-2 rounded-b-sm bg-[#f21c1c] text-white">Check</button>
+            <button onClick={handleCheck} className="border-t border-r border-b border-black mt-2 px-4 pl-4 pb-2 pt-2 rounded-b-sm bg-[#f21c1c] text-white">Check</button>
           </div>
           <div className="flex flex-row mt-8">
             <button onClick={() => addToCart(productData._id, selectSize)} className="border-l border-t border-b bg-[#f21c1c] text-white border-gray-400 py-3 pt-3 px-3 text-sm font-semibold">ADD TO CART</button>
-            <button className="border-r border-t border-b bg-white text-gray-400 border-gray-400 py-2 pt-2 px-4 text-sm font-semibold">BUY NOW</button>
+            <button onClick={() => handleBuyNow(productData._id, selectSize)} className="border-r border-t border-b bg-white text-gray-400 border-gray-400 py-2 pt-2 px-4 text-sm font-semibold">BUY NOW</button>
           </div>
           <hr className="mt-6 sm:w-4/5 bg-gray-600"/>
           <div className="text-sm text-gray-600 mt-5 flex flex-col gap-1 tracking-wider">
