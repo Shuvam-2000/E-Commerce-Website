@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { products } from "../assets/assets";
+import { toast } from "react-toastify";
 
 const ShopContext = createContext();
 
@@ -69,6 +70,11 @@ const ShoppingContextProvider = ({ children }) => {
 
     const addToCart = async (itemId, size) => {
         let cartData = structuredClone(cartItems);   // copy of cartItems
+
+        if(!size){
+            toast.error('Please Select Product Size')   // toastify error message
+            return
+        }
     
         if (cartData[itemId]) {
             if (cartData[itemId][size]) {
@@ -81,11 +87,48 @@ const ShoppingContextProvider = ({ children }) => {
             cartData[itemId][size] = 1;
         }
         setCartItems(cartData)
+        toast.success('Item Added To Cart Sucessfully')
     };
 
-    useEffect(() => {
-        console.log(cartItems)
-    },[cartItems])
+    // getting the cart count functionality
+    const getCartCount = () => {
+        let totalCount = 0;
+    
+        for (const category in cartItems) {
+            for (const item in cartItems[category]) {
+                if (cartItems[category][item] > 0) {
+                    totalCount += cartItems[category][item];
+                    console.log(totalCount)
+                }
+            }
+        }
+        return totalCount;
+    };
+    
+
+    // buy now functionality
+    const [buyNow, setBuyNow] = useState({})
+
+    const handleBuyNow = (itemId, size) => {
+        let buyData = structuredClone(buyNow)
+
+        if(!size){
+            toast.error("Please Select Product Size")
+            return
+        }
+        if (buyData[itemId]) {
+            if (buyData[itemId][size]) {
+                buyData[itemId][size] += 1;
+            } else {
+                buyData[itemId][size] = 1;
+            }
+        } else {
+            buyData[itemId] = {};
+            buyData[itemId][size] = 1;
+        }
+        setBuyNow(buyData)
+        toast.success("Ready to place your order!")
+    }
     
     // Storing all the data in an object
     const allValue = {
@@ -121,6 +164,9 @@ const ShoppingContextProvider = ({ children }) => {
         setShowSearch,
         cartItems,
         addToCart,
+        buyNow,
+        handleBuyNow,
+        getCartCount,
     };
 
     return (
