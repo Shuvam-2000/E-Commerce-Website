@@ -61,7 +61,7 @@ const Navbar = () => {
                 <NavLink className="py-2 pl-6 pt-4 border" to='/' onClick={() => setMenuVisible(false)}>HOME</NavLink>
                 <NavLink className="py-2 pl-6 pt-4 border" to='/collection' onClick={() => setMenuVisible(false)}>INVENTORY</NavLink>
                 <NavLink className="py-2 pl-6 pt-4 border" to='/aboutus' onClick={() => setMenuVisible(false)}>WHO WE ARE</NavLink>
-                <NavLink className="py-2 pl-6 pt-4 border-b" to='/contact' onClick={() => setMenuVisible(false)}>CONTACT</NavLink>
+                <NavLink className="py-2 pl-6 pt-4 border-b" to='/contact' onClick={() => setMenuVisible(false)}>CONTACT US</NavLink>
           </div>
       </div>
 
