@@ -8,12 +8,24 @@ const Cart = () => {
   // all the nessecary states
   const [cartData, setCartData] = useState([])
 
-  // useEffect(() => {
+  useEffect(() => {
+    const tempCartData = [];
     
-  //   const tempCartData = [];
-  //   for(const data in cartItems)
+    for(const category in cartItems) {
+        for(const item in cartItems[category]){
+          if(cartItems[category][item] > 0){
+            tempCartData.push({
+              _id: category,
+              size: category,
+              quantity: cartItems[category][item]
+            })
+          }
+        }
+    }
+    console.log(tempCartData);
 
-  //   },[cartItems])
+  },[cartItems]);
+
 
   return (
     <div className="">
