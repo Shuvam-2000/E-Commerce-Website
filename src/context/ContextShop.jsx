@@ -104,6 +104,36 @@ const ShoppingContextProvider = ({ children }) => {
         }
         return totalCount;
     };
+
+    // calculate the total price of the products in cart
+    const getCartAmount =  () => {
+        let totalCartAmount = 0;
+    
+        for (const productId in cartItems) {
+            let productInfo = products.find((compareProduct) => compareProduct._id === productId);
+    
+            if (productInfo) {
+                for (const size in cartItems[productId]) {
+                    try {
+                        if (cartItems[productId][size] > 0) {
+                            totalCartAmount += productInfo.price * cartItems[productId][size];
+                        }
+                    } catch (error) {
+                        console.error("Error processing item:", error);
+                    }
+                }
+            }
+        }
+        return totalCartAmount;
+    };
+
+    // update quantity of the product in cart page
+    const updateCartQuantity = async (itemId, size, quantity) => {
+        let cartData = structuredClone(cartItems)
+
+        cartData[itemId][size] = quantity
+        setCartItems(cartData)
+    }
     
 
     // buy now functionality
@@ -167,6 +197,8 @@ const ShoppingContextProvider = ({ children }) => {
         buyNow,
         handleBuyNow,
         getCartCount,
+        updateCartQuantity,
+        getCartAmount,
     };
 
     return (
