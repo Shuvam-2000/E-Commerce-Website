@@ -17,6 +17,7 @@ const Products = () => {
   const [checkPinCode, setCheckCode] = useState("")
   const [otherProducts, setOtherProducts] = useState([])
 
+  // slider for the review section
   const settings = {
       dots: true,
       infinite: false,
@@ -162,12 +163,12 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Top Review Section */}
+      {/* Top Customer Review Section */}
       <div className="mt-20">
         <div className="flex">
           <b className="border-t border-r border-l rounded-md px-5 py-3 font-mono text-xl"> Our Top Customers Say :-</b>
         </div>
-        <Slider {...settings} className="">
+        <Slider {...settings}>
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
           <h1 className="text-gray-700 font-mono text-xl mx-2">Ankit Kumar</h1>
           <div className="flex items-center gap-1 mx-2 mb-2">
@@ -235,7 +236,7 @@ const Products = () => {
         Have a Look
         <span className="text-[#f21c1c] font-mono ml-2">At Our BestSellers :-</span>
       </h1>
-      {/* Explore BestSelleing Products */}
+      {/* Explore BestSelling Products */}
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-8 gap-4 gap-y-6 cursor-pointer mt-10'>
                 {otherProducts.map((otherProductData) => (
                     <div key={otherProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out">
