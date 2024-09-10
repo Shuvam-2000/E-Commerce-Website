@@ -14,8 +14,10 @@ const Collection = () => {
 
   const toggleCategory = (e) => {
     const valueOfCategory = e.target.value;
+    // If the value is already in the filter, remove it
     if (categoryFilter.includes(valueOfCategory)) {
       setCategoryFilter(prev => prev.filter(item => item !== valueOfCategory));
+    // If the value is not in the filter, add it
     } else {
       setCategoryFilter(prev => [...prev, valueOfCategory]);
     }
@@ -72,6 +74,7 @@ const Collection = () => {
       );
     }
 
+    // price filter
     if (priceFilter.length > 0) {
       filteredProduct = filteredProduct.filter(product => {
         const price = product.price;
@@ -88,7 +91,7 @@ const Collection = () => {
       });
     }
 
-    // Apply sorting
+    // Apply sorting - price sorting
     switch (sortType) {
       case 'low-high':
         filteredProduct.sort((a, b) => a.price - b.price);
@@ -196,7 +199,7 @@ const Collection = () => {
                   <p className="text-[#414141] font-semibold transition-colors duration-300 hover:text-white mt-2">{priceCurrency}{showProductData.price}</p>
                 </Link>
               </div>
-            )) : <p className="text-center text-md sm:text-lg font-serif text-[#ff4646] font-semibold mt-4 col-span-full">Oops! No Products Available Now</p>}
+            )) : <p className="text-center text-md sm:text-lg font-serif text-[#ff4646] font-semibold mt-4 col-span-full">Oops!! No Products Available Now</p>}
         </div>
       </div>
     </div>
