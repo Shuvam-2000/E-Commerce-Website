@@ -5,6 +5,7 @@ import assets from "../assets/assets";
 import cart_empty from "../assets/empty_cart.png"
 import CartTotal from "../components/CartTotal";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"
 
 
 const Cart = () => {
@@ -82,10 +83,12 @@ const Cart = () => {
       <div className="flex justify-start my-20">
         <div className="w-full sm:w-[450px]">
           <CartTotal/>
-          <div className="w-full tex-end mt-8 mx-40">
-            <button onClick={() => navigate('/place-order')} 
-            className="bg-[#f21c1c] text-white border-gray-400 rounded-lg  py-3 px-8 my-8 text-sm font-medium cursor pointer">
-            GO TO ORDERS</button>
+          <div className="w-full text-center mt-8">
+            <button 
+              onClick={() => cartData.length > 0 ? navigate("/place-order") : toast.error("Your Cart is Empty")}
+              className="bg-[#f21c1c] text-white border-gray-400 rounded-lg py-3 px-8 my-8 text-sm font-medium cursor-pointer">
+              CONFIRM & MAKE PAYMENT
+            </button>
           </div>
         </div>
       </div>
