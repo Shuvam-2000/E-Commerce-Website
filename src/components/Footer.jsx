@@ -37,8 +37,8 @@ const Footer = () => {
             <Link to='/collection' className="text-black">
               <p className='text-[#414141] hover:text-[#f21c1c]'>Our Shop</p>
             </Link>
-            <Link to='/orders' className="text-black">
-              <p className='text-[#414141] hover:text-[#f21c1c]'>Your Orders</p>
+            <Link to='/cart' className="text-black">
+              <p className='text-[#414141] hover:text-[#f21c1c]'>Your Cart</p>
             </Link>
             <Link to='/aboutus' className="text-black">
               <p className='text-[#414141] hover:text-[#f21c1c]'>Know Us</p>
