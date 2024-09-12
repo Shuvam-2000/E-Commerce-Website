@@ -135,7 +135,6 @@ const ShoppingContextProvider = ({ children }) => {
         setCartItems(cartData)
     }
     
-
     // buy now functionality
     const [buyNow, setBuyNow] = useState({})
 
