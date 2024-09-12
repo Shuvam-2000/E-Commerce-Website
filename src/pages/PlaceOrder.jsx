@@ -1,14 +1,14 @@
 import { useState } from "react"
 import assets from "../assets/assets"
 import CartTotal from "../components/CartTotal"
-import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+// import { useNavigate } from "react-router-dom"
 
 
 const PlaceOrder = () => {
 
   const [paymentMethod, setPaymentMethod] = useState('cod')
-  const navigate = useNavigate()
+  // const navigate = useNavigate()    // to be given later
   const [deliveryInfo, setDeliveryInfo] = useState({    // state for delivery info validation
     firstName: "",
     lastName: "",
@@ -130,7 +130,7 @@ const PlaceOrder = () => {
     } else {
       toast.error("Address Not Saved");
     }
-    navigate("/orders");
+    // navigate("/orders");
   };
 
 
@@ -148,20 +148,20 @@ const PlaceOrder = () => {
           <h2 className="lg-text-4xl font-mono">Your <span className="text-[#f21c1c]">Delivery Info :-</span></h2> 
         </div>
         <div className="flex gap-3">
-          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="First Name" value={deliveryInfo.firstName} name="firstName" onChange={handleChange} type="text" />
-          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="Last Name" value={deliveryInfo.lastName} name="lastName" onChange={handleChange} type="text" />
+          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="First Name" value={deliveryInfo.firstName} name="firstName" onChange={handleChange} type="text" />
+          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="Last Name" value={deliveryInfo.lastName} name="lastName" onChange={handleChange} type="text" />
         </div>
-        <input className="border border-gray-300 rounded py-1.5 px-3.5 w-full" placeholder="Email Address" value={deliveryInfo.email} name="email" onChange={handleChange} type="email" />
-        <input className="border border-gray-300 rounded py-1.5 px-3.5 w-full" placeholder="House No, Address, Street" value={deliveryInfo.houseNo} name="houseNo" onChange={handleChange} type="text" />
+        <input className="border border-gray-300 rounded py-1.5 px-3.5 w-full hover:border-black" placeholder="Email Address" value={deliveryInfo.email} name="email" onChange={handleChange} type="email" />
+        <input className="border border-gray-300 rounded py-1.5 px-3.5 w-full hover:border-black" placeholder="House No, Address, Street" value={deliveryInfo.houseNo} name="houseNo" onChange={handleChange} type="text" />
         <div className="flex gap-3">
-          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="City" value={deliveryInfo.city} name="city" onChange={handleChange} type="text" />
-          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="State" value={deliveryInfo.state} name="state" onChange={handleChange} type="text" />
+          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="City" value={deliveryInfo.city} name="city" onChange={handleChange} type="text" />
+          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="State" value={deliveryInfo.state} name="state" onChange={handleChange} type="text" />
         </div>
         <div className="flex gap-3">
-          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="Pincode" value={deliveryInfo.pincode} name="pincode" onChange={handleChange} type="number" />
-          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="Landmark" value={deliveryInfo.landmark} name="landmark" onChange={handleChange} type="text" />
+          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="Pincode" value={deliveryInfo.pincode} name="pincode" onChange={handleChange} type="text" />
+          <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="Landmark" value={deliveryInfo.landmark} name="landmark" onChange={handleChange} type="text" />
         </div>
-        <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full" placeholder="Phone Number" value={deliveryInfo.phoneNumber} name="phoneNumber" onChange={handleChange} type="text" />
+        <input className="border border-gray-300 rounded-lg py-1.5 px-3.5 w-full hover:border-black" placeholder="Phone Number" value={deliveryInfo.phoneNumber} name="phoneNumber" onChange={handleChange} type="text" />
       </div>
 
       {/* Payment Info & Method */}
