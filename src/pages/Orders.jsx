@@ -1,7 +1,5 @@
 const Orders = () => {
 
-  // const { products, priceCurrency, } = useContext(ShopContext);
-
   return (
     <div className="border-t pt-12 pb-12">
       <div className="text-2xl">
