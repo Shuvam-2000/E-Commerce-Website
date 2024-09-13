@@ -59,8 +59,4 @@ ShopsPhere is an e-commerce web application for clothes and wearables. It is a f
 
 ## Deployment
 
-The project is deployed on Vercel and can be accessed online for a live demo.
-Link:- https://shops-phere.vercel.app/
----
-## Clone The Repository
-git clone https://github.com/your-username/ShopsPhere.git
+The project is deployed and hosted on Vercel. You can view the live application [here](https://shops-phere.vercel.app/)
