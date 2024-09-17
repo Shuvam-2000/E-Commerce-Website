@@ -6,7 +6,7 @@ const Login = () => {
 
   const [ flag, setFlag ] = useState(false)
   const navigate = useNavigate()
-  const [ manageLogin, setManageLogin ] = useState('Login')
+  const [ manageLogin, setManageLogin ] = useState('Log In')
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     email: "",
@@ -80,7 +80,7 @@ return (
       <div className="inline-flex items-center gap-2 mb-2 mt-10">
         <p className="font-mono text-3xl">
         {manageLogin.split(" ")[0]} 
-        <span className="text-[#f21c1c]"> {manageLogin.split(" ")[1]}</span>
+        <span className="text-[#f21c1c]">{manageLogin.split(" ")[1]}</span>
         </p>
         <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
       </div>

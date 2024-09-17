@@ -11,7 +11,7 @@ const LatestProducts = () => {
   return (
     <div className="my-10">
     {/* Body Title Section */}
-      <div className="text-center py-8 text-3xl">
+      <div className="text-center py-8 sm:text-3xl text-2xl">
         <div className="inline-flex gap-2 items-center mb-3">
             <p className="text-[#414141]">{text1} <span className="text-[#f21c1c] font-medium">{text2} {text3}</span></p>
             <p className="w-8 sm:w-12 h-[1px] sm:h-[2px] bg-gray-700"></p>
@@ -22,11 +22,11 @@ const LatestProducts = () => {
       </div>
 
       {/* Rendering the products on the home page */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {exploreProducts.map((productData) => (
                   <div key={productData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out">
                       <Link to={`/products/${productData._id}`} className="block p-4">
-                            <img src={productData.image} alt={productData.name} className="w-full h-40 sm:mb-5 rounded-lg" />
+                            <img src={productData.image} alt={productData.name} className="w-full h-40 sm:mb-5 px-2 rounded-lg" />
                             <p className="text-lg font-mono text-[#414141]">{productData.name}</p>
                             <p className="text-[#414141] font-bold">{priceCurrency} {productData.price}</p>
                       </Link>

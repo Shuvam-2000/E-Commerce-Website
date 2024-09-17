@@ -115,7 +115,7 @@ const Collection = () => {
       {/* Product Filters */}
       <div className="min-w-60">
         <p 
-          className="my-2 text-xl items-center cursor-pointer gap-2 font-mono flex justify-between"
+          className="my-2 sm:text-xl text-sm items-center cursor-pointer gap-2 font-mono flex justify-between"
           onClick={() => setShowFilter(!showFilter)}
         >
           Filters :-
@@ -177,11 +177,11 @@ const Collection = () => {
 
       {/* Inventory Page product shown right */}
       <div className="flex-1">
-        <div className="flex justify-between text-base sm:text-2xl mb-4">
+        <div className="flex justify-between text-xs sm:text-2xl mb-4">
           <p className="text-[#414141]">{collectionHeading} <span className="text-[#f21c1c] font-medium">{collectionHeading2} :-</span></p>
 
           {/* Product Sorting */}
-          <select onChange={(e) => setSortType(e.target.value)} className="border border-gray-300 text-sm px-2 rounded-md font-mono cursor-pointer">
+          <select onChange={(e) => setSortType(e.target.value)} className="border border-gray-300 sm:text-sm text-xs sm:px-2 pb-1 pt-1 rounded-md font-mono cursor-pointer text-center">
             <option value="relevant" className="bg-gray-300">Relevant Products</option>
             <option value="low-high">Price: Low to High</option>
             <option value="high-low" className="bg-gray-300">Price: High to Low</option>
@@ -189,7 +189,7 @@ const Collection = () => {
         </div>
 
         {/* Product Display */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 p-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-6 p-3">
           {filteredProducts.length > 0 ?
             filteredProducts.map((showProductData) => (
               <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out hover:bg-[#ff4646] hover:text-white">

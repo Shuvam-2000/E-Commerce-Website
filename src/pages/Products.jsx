@@ -233,11 +233,11 @@ const Products = () => {
       </div>
 
       <h1 className="flex justify-center mt-14 mb-2 text-[#414141] text-xl sm:text-2xl font-mono">
-        Have a Look
-        <span className="text-[#f21c1c] font-mono ml-2">At Our BestSellers :-</span>
+        Explore
+        <span className="text-[#f21c1c] font-mono ml-2"> Our BestSellers :-</span>
       </h1>
       {/* Explore BestSelling Products */}
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-8 gap-4 gap-y-6 cursor-pointer mt-10'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-8 gap-4 gap-y-6 cursor-pointer mt-10 mx-4 mr-2'>
                 {otherProducts.map((otherProductData) => (
                     <div key={otherProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out">
                     <Link to={`/products/${otherProductData._id}`} className="block">
