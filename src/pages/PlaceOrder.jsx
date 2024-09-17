@@ -127,8 +127,30 @@ const PlaceOrder = () => {
     const isConfirm = window.confirm("Do You Want Save Your Address For Future Reference ?");
     if (isConfirm) {
       toast.success("Address Has Been Saved");
+      setDeliveryInfo({
+        firstName: "",
+        lastName: "",
+        email: "",
+        houseNo: "",
+        city: "",
+        state: "",
+        pincode: "",
+        landmark: "",
+        phoneNumber: ""
+      })
     } else {
       toast.error("Address Not Saved");
+      setDeliveryInfo({
+        firstName: "",
+        lastName: "",
+        email: "",
+        houseNo: "",
+        city: "",
+        state: "",
+        pincode: "",
+        landmark: "",
+        phoneNumber: ""
+      })
     }
     // navigate("/orders");
   };
