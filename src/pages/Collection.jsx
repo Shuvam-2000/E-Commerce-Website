@@ -194,9 +194,9 @@ const Collection = () => {
             filteredProducts.map((showProductData) => (
               <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out hover:bg-[#ff4646] hover:text-white">
                 <Link to={`/products/${showProductData._id}`} className="block p-4">
-                  <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 object-cover rounded-lg" />
-                  <p className="text-sm sm:text-lg font-serif text-[#414141] transition-colors duration-300 hover:text-white">{showProductData.name}</p>
-                  <p className="text-[#414141] font-semibold transition-colors duration-300 hover:text-white mt-2">{priceCurrency}{showProductData.price}</p>
+                  <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 rounded-lg" />
+                  <p className="text-sm sm:text-lg font-serif mt-2 ml-2 text-[#414141] transition-colors duration-300 hover:text-white">{showProductData.name}</p>
+                  <p className="text-[#414141] font-semibold transition-colors duration-300 hover:text-white mt-2 ml-2">{priceCurrency}{showProductData.price}</p>
                 </Link>
               </div>
             )) : <p className="text-center text-md sm:text-lg font-serif text-[#ff4646] font-semibold mt-4 col-span-full">Oops!! No Products Available Now</p>}

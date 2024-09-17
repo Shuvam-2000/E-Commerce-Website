@@ -27,8 +27,8 @@ const LatestProducts = () => {
                   <div key={productData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out">
                       <Link to={`/products/${productData._id}`} className="block p-4">
                             <img src={productData.image} alt={productData.name} className="w-full h-40 sm:mb-5 px-2 rounded-lg" />
-                            <p className="text-lg font-mono text-[#414141]">{productData.name}</p>
-                            <p className="text-[#414141] font-bold">{priceCurrency} {productData.price}</p>
+                            <p className="sm:text-lg text-sm font-serif mt-2 ml-2 sm:font-mono text-[#414141]">{productData.name}</p>
+                            <p className="text-[#414141] font-bold mt-2 ml-2">{priceCurrency} {productData.price}</p>
                       </Link>
                   </div>
              ))}
