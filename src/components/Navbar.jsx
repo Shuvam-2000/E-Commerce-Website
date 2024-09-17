@@ -53,13 +53,6 @@ const Navbar = () => {
               <img src={assets.cart_icon} alt="cart-icon" className="w-4 sm:w-5" />
               <p className="absolute sm:right-[-5px] right-[-6px] sm:bottom-[-5px] bottom-[-7px] w-4 text-center leading-4 bg-red-500 text-white aspect-square rounded-full text-[8px]">{getCartCount(cartItems)} </p>
           </Link>
-           <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-              <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded-md">
-                <p className="cursor-pointer hover:text-[#f21c1c]">My Profile</p>
-                <p className="cursor-pointer hover:text-[#f21c1c]">Orders</p>
-                <p className="cursor-pointer hover:text-[#f21c1c]">Logout</p>
-              </div>
-           </div>
         </div>
           <img 
             onClick={() => setShowSearch(true)} 

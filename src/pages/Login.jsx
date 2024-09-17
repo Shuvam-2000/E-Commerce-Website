@@ -6,7 +6,7 @@ const Login = () => {
 
   const [ flag, setFlag ] = useState(false)
   const navigate = useNavigate()
-  const [ manageLogin, setManageLogin ] = useState('Log In')
+  const [ manageLogin, setManageLogin ] = useState('Login')
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     email: "",
