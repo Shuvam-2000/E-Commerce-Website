@@ -17,6 +17,7 @@ const SearchBar = () => {
             setvisible(true)
         }else{
             setvisible(false)
+            setShowSearch(false)
         }
     },[location])
 
