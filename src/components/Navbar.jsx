@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets"
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ContextShop";
@@ -8,8 +8,9 @@ const Navbar = () => {
   const {menuVisible, setMenuVisible, setShowSearch, getCartCount, cartItems} = useContext(ShopContext)
 
   const [visible, setvisible] = useState(false)
+  const navigate = useNavigate() 
     
-    // uselocation() is used to only show the searchbar in inventory page
+    // uselocation() is used to only show the searchbar in inventory page for small screen
     const location = useLocation();
 
     useEffect(() => {
@@ -55,7 +56,7 @@ const Navbar = () => {
           </Link>
         </div>
           <img 
-            onClick={() => setShowSearch(true)} 
+            onClick={() => { setShowSearch(true); navigate('/collection'); }} 
             src={assets.search_icon} 
             alt="search-icon" 
             className={`sm:w-5 cursor-pointer ${visible ? 'block w-3' : 'hidden'} sm:block`} 
