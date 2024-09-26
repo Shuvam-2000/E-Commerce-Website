@@ -23,7 +23,7 @@ ShopsPhere is an e-commerce web application for clothes and wearables. It is a f
 
 ### 2. Inventory Page
 - Showcases all products with options to filter by category & price.
-- Search functionality to quickly find products.
+- Search functionality to quickly find products. Added routing to the search functionality for seamless user experience
 - Price-based sorting to help users browse products within their budget.
 
 ### 3. Product Page
