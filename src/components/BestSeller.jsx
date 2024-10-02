@@ -19,7 +19,7 @@ const BestSeller = () => {
             {/* Rendering the top 6 best-selling products */}
             <div className='grid grid-cols-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-8 gap-4 gap-y-6 cursor-pointer'>
                 {bestSeller.map((bestSellingData) => (
-                    <div key={bestSellingData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 transition ease-in-out">
+                    <div key={bestSellingData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 duration-500 transition ease-in-out">
                         <img src={bestSellingData.image} alt={bestSellingData.name} className="w-full h-40 sm:mb-5 object-cover" />
                         <p className="text-center mb-2 text-xs font-medium">{bestSellingData.name}</p>
                         <p className="text-center text-xs mb-2 font-mono">{priceCurrency}{bestSellingData.price}</p>
