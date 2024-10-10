@@ -27,7 +27,7 @@ return showSearch && visible ? (
         <input value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 outline-none bg-inherit text-sm" type="text" placeholder="Search"/>
         <img className="w-4 cursor-pointer hover:scale-110 transition ease-in-out" src={assets.search_icon}/>
       </div>
-        <img onClick={() => setShowSearch(false)} className="inline w-3 mb-1 hover:scale-110 transition ease-in-out cursor-pointer" src={assets.cross_icon} />
+        <img onClick={() => setShowSearch(false)} className="inline w-3 mb-1 hover:scale-110 transition-all ease-in-out cursor-pointer" src={assets.cross_icon} />
     </div>
   ) : ""
 }
