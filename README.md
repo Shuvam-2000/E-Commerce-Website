@@ -1,6 +1,6 @@
 # ShopsPhere
 
-ShopsPhere is an e-commerce web application for clothes and wearables. It is a frontend-only project that offers users a seamless shopping experience with a variety of features and smooth navigation across different sections of the website.
+ShopsPhere is an clothing & wearables shopping web application. It is a frontend-only project that offers users a seamless shopping experience with a variety of features and smooth navigation across different sections of the website.
 
 ## Tech Stack
 
