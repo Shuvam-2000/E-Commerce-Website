@@ -166,11 +166,11 @@ const Products = () => {
       {/* Top Customer Review Section */}
       <div className="mt-20">
         <div className="flex">
-          <b className="border-t border-r border-l rounded-md px-5 py-3 font-mono text-xl"> Our Top Customers Say :-</b>
+          <b className="border-t border-r border-l rounded-md px-5 py-3 font-mono sm:text-xl text-sm"> Our Top Customers Say :-</b>
         </div>
         <Slider {...settings}>
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
-          <h1 className="text-gray-700 font-mono text-xl mx-2">Ankit Kumar</h1>
+          <h1 className="text-gray-700 font-mono sm:text-xl text-sm mx-2">Ankit Kumar</h1>
           <div className="flex items-center gap-1 mx-2 mb-2">
               <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
               <img className="w-3.5" src={assets.star_icon}/>
@@ -179,7 +179,7 @@ const Products = () => {
               <img className="w-3.5" src={assets.star_icon}/>
               <img className="w-3.5" src={assets.star_icon}/>
             </div>
-          <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
+          <p className="text-gray-400 font-mono mx-2 sm:tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
           <h1 className="text-gray-700 font-mono text-xl mx-2">Ananya Sharma</h1>
@@ -194,7 +194,7 @@ const Products = () => {
           <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
-          <h1 className="text-gray-700 font-mono text-xl mx-2"> Priya Desai</h1>
+          <h1 className="text-gray-700 font-mono sm:text-xl text-sm mx-2"> Priya Desai</h1>
           <div className="flex items-center gap-1 mx-2 mb-2">
               <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
               <img className="w-3.5" src={assets.star_icon}/>
@@ -206,7 +206,7 @@ const Products = () => {
           <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
-          <h1 className="text-gray-700 font-mono text-xl mx-2">Amit Singh</h1>
+          <h1 className="text-gray-700 font-mono sm:text-xl text-sm mx-2">Amit Singh</h1>
           <div className="flex items-center gap-1 mx-2 mb-2">
               <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
               <img className="w-3.5" src={assets.star_icon}/>
@@ -218,7 +218,7 @@ const Products = () => {
           <p className="text-gray-400 font-mono mx-2 tracking-wide">Praised for its comfort and stylish design. Some noted that the sizing runs large.Praise for its comfort and stylish design. Some noted that the sizing runs large.</p>
         </div>
         <div className="flex flex-col gap-2 border py-4 px-2 text-sm text-gray-600 rounded-sm">
-          <h1 className="text-gray-700 font-mono text-xl mx-2">Neha Gupta</h1>
+          <h1 className="text-gray-700 font-mono sm:text-xl text-sm mx-2">Neha Gupta</h1>
           <div className="flex items-center gap-1 mx-2 mb-2">
               <p className="text-gray-500 font-mono tracking-wide">Rated :- </p>
               <img className="w-3.5" src={assets.star_icon}/>
