@@ -192,7 +192,7 @@ const Collection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-6 p-3">
           {filteredProducts.length > 0 ?
             filteredProducts.map((showProductData) => (
-              <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg hover:scale-110 duration-500 transition ease-in-out hover:bg-[#ff4646] hover:text-white">
+              <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg sm:hover:scale-110 duration-500 transition ease-in-out hover:bg-[#ff4646] hover:text-white">
                 <Link to={`/products/${showProductData._id}`} className="block p-4">
                   <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 rounded-lg" />
                   <p className="text-sm sm:text-lg font-serif mt-2 ml-2 text-[#414141] transition-colors duration-300 hover:text-white">{showProductData.name}</p>
