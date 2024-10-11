@@ -195,7 +195,7 @@ const Collection = () => {
               <div key={showProductData._id} className="overflow-hidden border rounded-lg shadow-lg sm:hover:scale-110 duration-500 transition ease-in-out sm:hover:bg-[#ff4646] sm:hover:text-white">
                 <Link to={`/products/${showProductData._id}`} className="block p-4">
                   <img src={showProductData.image} alt={showProductData.name} className="w-full h-40 sm:mb-5 rounded-lg" />
-                  <p className="text-sm sm:text-lg font-serif mt-2 ml-2 text-[#414141] transition-colors duration-300 hover:text-white">{showProductData.name}</p>
+                  <p className="text-sm sm:text-lg font-serif mt-2 ml-2 text-[#414141] transition-colors duration-300 sm:hover:text-white">{showProductData.name}</p>
                   <p className="text-[#414141] font-semibold transition-colors duration-300 sm:hover:text-white mt-2 ml-2">{priceCurrency}{showProductData.price}</p>
                 </Link>
               </div>
