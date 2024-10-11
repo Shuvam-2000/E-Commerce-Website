@@ -145,7 +145,7 @@ const Products = () => {
               ))}
             </div>
           </div>
-          <p className="text-gray-700 text-sm font-serif tracking-widest">Check product avaliablity for your pincode :-</p>
+          <p className="text-gray-700 sm:text-sm text-xs font-serif tracking-widest">Check product avaliablity for your pincode :-</p>
           <div className="flex flex-row">
             <input value={checkPinCode} onChange={(e) => setCheckCode(e.target.value)} className=" mt-2 py-2 pt-2 px-2 b rounded-sm
             border-l border-t border-b border-gray-400" type="text" placeholder="Enter Your Pincode"/>
